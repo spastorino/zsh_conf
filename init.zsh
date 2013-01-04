@@ -30,7 +30,7 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 ## Command history configuration
-HISTFILE=$HOME/.zsh/.zsh_history
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
