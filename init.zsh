@@ -1,3 +1,4 @@
+source $HOME/.zsh/completion.zsh
 source $HOME/.zsh/git.zsh
 source $HOME/.zsh/key-bindings.zsh
 
