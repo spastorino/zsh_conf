@@ -62,17 +62,23 @@ export LC_CTYPE=$LANG
 autoload compinit
 compinit
 
-alias memcached_load="launchctl load -w /usr/local/opt/memcached/homebrew.mxcl.memcached.plist"
-alias memcached_unload="launchctl unload -w /usr/local/opt/memcached/homebrew.mxcl.memcached.plist"
-alias mysql_load="launchctl load -w /usr/local/opt/mysql/homebrew.mxcl.mysql.plist"
-alias mysql_unload="launchctl unload -w /usr/local/opt/mysql/homebrew.mxcl.mysql.plist"
-alias postgres_load="launchctl load -w /usr/local/opt/postgresql/homebrew.mxcl.postgresql.plist"
-alias postgres_unload="launchctl unload -w /usr/local/opt/postgresql/homebrew.mxcl.postgresql.plist"
-alias mongo_load="launchctl load -w /usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist"
-alias mongo_unload="launchctl unload -w /usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist"
-alias redis_load="launchctl load -w /usr/local/opt/redis/homebrew.mxcl.redis.plist"
-alias redis_unload="launchctl unload -w /usr/local/opt/redis/homebrew.mxcl.redis.plist"
+function brew_launch()
+{
+  if [ -z "$2" -o "x$1" = "x-h" -o "x$1" = "x--help" ]; then
+    brew_launch_usage
+    return 1
+  else
+    PLIST=$(ls -1 /usr/local/Cellar/$2/*/homebrew.mxcl.$2.plist | tail -1)
+    if [ -f $PLIST ]; then
+      launchctl $1 -F $PLIST
+    fi
+  fi
+}
 
+function brew_launch_usage()
+{
+  echo "usage: brew_launch [load|unload] [program_name]"
+}
 
 # export PATH=/usr/local/share/python:$PATH
 
