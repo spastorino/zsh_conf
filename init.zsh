@@ -84,4 +84,4 @@ function brew_launch_usage()
 
 # source /usr/local/opt/chruby/share/chruby/chruby.sh
 # source /usr/local/opt/chruby/share/chruby/auto.sh
-# chruby 2.0.0dev
+# chruby 2.0
