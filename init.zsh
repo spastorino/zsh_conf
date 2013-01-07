@@ -62,24 +62,6 @@ export LC_CTYPE=$LANG
 autoload compinit
 compinit
 
-function brew_launch()
-{
-  if [ -z "$2" -o "x$1" = "x-h" -o "x$1" = "x--help" ]; then
-    brew_launch_usage
-    return 1
-  else
-    PLIST=$(ls -1 /usr/local/Cellar/$2/*/homebrew.mxcl.$2.plist | tail -1)
-    if [ -f $PLIST ]; then
-      launchctl $1 -F $PLIST
-    fi
-  fi
-}
-
-function brew_launch_usage()
-{
-  echo "usage: brew_launch [load|unload] [program_name]"
-}
-
 # export PATH=/usr/local/share/python:$PATH
 
 # source /usr/local/opt/chruby/share/chruby/chruby.sh
